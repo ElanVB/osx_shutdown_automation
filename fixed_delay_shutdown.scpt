@@ -6,11 +6,13 @@ set WHITE_LIST to {"Finder", "Terminal", "Atom"}
 set force_with_shell to true
 
 -- Notify user that the system will shutdown
-display notification "shutting down in " & shutdown_delay_minutes & " minutes"
+set notification_text to "Shutting down in " & shutdown_delay_minutes & " mins"
+display notification notification_text sound name "default"
+do shell script ("say '" & notification_text & "'")
 
 -- Use the shell shutdown command to force shutdown if app interferes
 if force_with_shell then
-    do shell script ("shutdown -h +" & (shutdown_delay_minutes + 5))
+    do shell script ("shutdown -h +" & (shutdown_delay_minutes + 5) & " > /dev/null 2>&1 &")
 end if
 
 -- Wait for the appropriate amount of time
