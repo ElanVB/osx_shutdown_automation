@@ -1,10 +1,17 @@
 -- Set time to wait before shutdown in seconds
-set shutdown_delay to 10 * 60
+set shutdown_delay_minutes to 1
+set shutdown_delay to shutdown_delay_minutes * 60
 set quit_apps to true
 set WHITE_LIST to {"Finder", "Terminal", "Atom"}
+set force_with_shell to true
 
 -- Notify user that the system will shutdown
-display notification "shutting down in " & shutdown_delay & " seconds"
+display notification "shutting down in " & shutdown_delay_minutes & " minutes"
+
+-- Use the shell shutdown command to force shutdown if app interferes
+if force_with_shell then
+    do shell script ("shutdown -h +" & (shutdown_delay_minutes + 5))
+end if
 
 -- Wait for the appropriate amount of time
 delay shutdown_delay
