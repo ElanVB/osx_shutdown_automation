@@ -1,5 +1,5 @@
 -- Set time to wait before shutdown in seconds
-set shutdown_delay_minutes to 1
+set shutdown_delay_minutes to 10
 set shutdown_delay to shutdown_delay_minutes * 60
 set quit_apps to true
 set WHITE_LIST to {"Finder", "Terminal", "Atom"}
