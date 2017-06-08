@@ -7,9 +7,8 @@ display notification "shutting down in " & shutdown_delay & " seconds"
 -- Wait for the appropriate amount of time
 delay shutdown_delay
 
--- do not let applications prevent shutdown
+-- Do not let applications prevent shutdown
 ignoring application responses
     -- Shut the system down
-    -- tell application "System Events" to shut down
-    display notification "Ignoring application responses"
+    tell application "System Events" to shut down
 end ignoring
